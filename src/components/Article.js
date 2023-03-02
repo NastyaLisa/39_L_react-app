@@ -9,7 +9,7 @@ class Article extends Component {
             <div className="article">
             {this.props.children}
             <ArticleBody lang={this.props.lang} />
-            <ArticleActions />
+            <ArticleActions lang={this.props.lang}/>
             </div>
             );
     }
