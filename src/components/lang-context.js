@@ -1,5 +1,5 @@
 import React from "react";
 const LangContext = React.createContext({
- langs: {}
+  langs: {},
 });
 export default LangContext;

@@ -24,18 +24,23 @@ const UA = {
 class App extends Component {
   constructor() {
     super();
+    const storedLang = localStorage.getItem("lang");
     this.state = {
-      lang: EN,
+      lang: storedLang ? (storedLang === "UA" ? UA : EN) : EN,
     };
   }
 
-  SetLangEN() {
-    this.setState({ lang: EN });
+  SetLang(lang) {
+    this.setState({ lang });
+    localStorage.setItem("lang", lang.current_lang);
   }
+  // SetLangEN() {
+  //   this.setState({ lang: EN });
+  // }
 
-  SetLangUA() {
-    this.setState({ lang: UA });
-  }
+  // SetLangUA() {
+  //   this.setState({ lang: UA });
+  // }
 
   render() {
     const { lang } = this.state;
@@ -52,13 +57,17 @@ class App extends Component {
           </Article>
           <div className="lang">
             <button
-              onClick={this.SetLangUA.bind(this)}
+              onClick={() => {
+                this.SetLang(UA);
+              }}
               className={`${currentLang === "UA" ? "active" : ""} lang-btn`}
             >
               UA
             </button>
             <button
-              onClick={this.SetLangEN.bind(this)}
+              onClick={() => {
+                this.SetLang(EN);
+              }}
               className={`${currentLang === "EN" ? "active" : ""} lang-btn`}
             >
               EN

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
-  "homepage": "https://nastyalisa.github.io/38_L_react-app",
+  "homepage": "https://nastyalisa.github.io/39_L_react-app",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
