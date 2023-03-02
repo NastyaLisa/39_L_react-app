@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Article from "./components/Article";
+import LangContext from "./components/lang-context";
 
 const EN = {
   title: "NVIDIA news",
@@ -42,26 +43,28 @@ class App extends Component {
 
     return (
       <div className="wrapper">
-        <h1 className="title">{lang.title}</h1>
-        <Article lang={lang}>
-          <div className="article__title">
-            <h2>{lang.subtitle}</h2>
+        <LangContext.Provider value={this.state.lang}>
+          <h1 className="title">{lang.title}</h1>
+          <Article>
+            <div className="article__title">
+              <h2>{lang.subtitle}</h2>
+            </div>
+          </Article>
+          <div className="lang">
+            <button
+              onClick={this.SetLangUA.bind(this)}
+              className={`${currentLang === "UA" ? "active" : ""} lang-btn`}
+            >
+              UA
+            </button>
+            <button
+              onClick={this.SetLangEN.bind(this)}
+              className={`${currentLang === "EN" ? "active" : ""} lang-btn`}
+            >
+              EN
+            </button>
           </div>
-        </Article>
-        <div className="lang">
-          <button
-            onClick={this.SetLangUA.bind(this)}
-            className={`${currentLang === 'UA' ? 'active' : ''} lang-btn`}
-          >
-            UA
-          </button>
-          <button
-            onClick={this.SetLangEN.bind(this)}
-            className={`${currentLang === 'EN' ? 'active' : ''} lang-btn`}
-          >
-            EN
-          </button>
-        </div>
+        </LangContext.Provider>
       </div>
     );
   }
